@@ -2,12 +2,16 @@
 <html>
   <head>
     <title>{{ page_title }}</title>
-    <link rel="stylesheet" href="/static/css/styles.css" />
     {% block javascript_1 %}
     {% endblock %}
+    <link rel="stylesheet" href="/static/css/styles.css">
   </head>
-  <body>
-    {% block body_content %}
-    {% endblock %}
+  <body class="width-full-screen">
+    <div role="region" class="region-container width-full-screen">
+      <div class="region-outer">
+        {% block body_content %}
+        {% endblock %}
+      </div>
+    </div>
   </body>
 </html>

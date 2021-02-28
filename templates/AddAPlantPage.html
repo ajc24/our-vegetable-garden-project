@@ -7,33 +7,45 @@
 {% endblock %}
 
 {% block body_content %}
-<h1>Add a Plant</h1>
-<span>
-  <label for="name">Name:</label>
-  <br />
-  <input type="text" id="name" onkeypress="handleUserFormInput(this.id, this.value)" value="" autofocus />
-</span>
-<br /><br />
-<span>
-  <label for="variety">Variety:</label>
-  <br />
-  <input type="text" id="variety" onkeypress="handleUserFormInput(this.id, this.value)" value="" />
-</span>
-<br /><br />
-<span>
-  <label for="photo">Photo:</label>
-  <br />
-  <input type="file" id="photo" />
-</span>
-<br /><br />
-<span>
+<div class="page-heading-text-container">
+  <h1 class="page-heading-text-content">
+    Add a Plant
+  </h1>
+  <div role="presentation" class="page-heading-divider-outer">
+    <div class="page-heading-divider-inner"></div>
+  </div>
+</div>
+<div class="form-item-container">
+  <div class="form-item-left-side">
+    <label for="name">Name:</label>
+  </div>
+  <div class="form-item-right-side">
+    <input type="text" id="name" onkeypress="handleUserFormInput(this.id, this.value)" value="" autofocus />
+  </div>
+</div>
+<div class="form-item-container">
+  <div class="form-item-left-side">
+    <label for="variety">Variety:</label>
+  </div>
+  <div class="form-item-right-side">
+    <input type="text" id="variety" onkeypress="handleUserFormInput(this.id, this.value)" value="" />
+  </div>
+</div>
+<div class="form-item-container">
+  <div class="form-item-left-side">
+    <label for="photo">Photo:</label>
+  </div>
+  <div class="form-item-right-side">
+    <input type="file" id="photo" />
+  </div>
+</div>
+<div class="form-submit-container">
   <input type="button" onclick="submitForm()" value="Submit" />
-</span>
-<br /><br />
+</div>
 <!--
-  Name
-  Picture / Photo
-  Variety
+  OK Name
+  OK Picture / Photo
+  OK Variety
   Lifespan
   Number of cells
   Year of seed packet
