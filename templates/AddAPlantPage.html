@@ -8,25 +8,28 @@
 
 {% block body_content %}
 <h1>Add a Plant</h1>
-  <span>
-    <label for="name">Name:</label>
-    <br />
-    <input type="text" id="name" onkeypress="handleUserFormInput(this.id, this.value)" value="" autofocus />
-  </span>
-  <br /><br />
-  <span>
-    <label for="variety">Variety:</label>
-    <br />
-    <input type="text" id="variety" onkeypress="handleUserFormInput(this.id, this.value)" value="" />
-  </span>
-  <br /><br />
-  <span>
-    <label for="photo">Photo:</label>
-    <br />
-    <input type="file" id="photo" />
-  </span>
-  <br /><br />
+<span>
+  <label for="name">Name:</label>
+  <br />
+  <input type="text" id="name" onkeypress="handleUserFormInput(this.id, this.value)" value="" autofocus />
+</span>
+<br /><br />
+<span>
+  <label for="variety">Variety:</label>
+  <br />
+  <input type="text" id="variety" onkeypress="handleUserFormInput(this.id, this.value)" value="" />
+</span>
+<br /><br />
+<span>
+  <label for="photo">Photo:</label>
+  <br />
+  <input type="file" id="photo" />
+</span>
+<br /><br />
+<span>
   <input type="button" onclick="submitForm()" value="Submit" />
+</span>
+<br /><br />
 <!--
   Name
   Picture / Photo
