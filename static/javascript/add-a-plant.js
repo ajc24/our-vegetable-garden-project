@@ -1,19 +1,21 @@
+/* Form JSON data */
+var formJson = {
+  autofocus: 'name',
+  fileInput: [
+    'photo'
+  ],
+  textInput: [
+    'name',
+    'variety'
+  ],
+};
+
 /**
  * Onload event to ensure all form fields are cleared each time
  * the page is refreshed / reloaded
  */
 window.onload = function() {
-  document.getElementById('name').value = '';
-  document.getElementById('variety').value = '';
-}
-
-/**
- * Handles user input into the relevant form fields
- * @param {string} inputFieldId 
- * @param {string} newInputValue 
- */
-function handleUserFormInput(inputFieldId, newInputValue) {
-  document.getElementById(inputFieldId).value = newInputValue;
+  clearFormData(formJson);
 }
 
 /**
@@ -21,9 +23,11 @@ function handleUserFormInput(inputFieldId, newInputValue) {
  */
 function submitForm() {
   var formData = new FormData();
-  formData.append('name', document.getElementById('name').value.trim());
-  formData.append('variety', document.getElementById('variety').value.trim());
+  formData.append('name', getCleanInputValue(formJson.textInput[0]));
+  formData.append('variety', getCleanInputValue(formJson.textInput[1]));
+  formData.append('photo', getFileUpload(formJson.fileInput[0]));
   postRequest('/submitaddaplant', formData, true, function(response) {
     alert(response);
+    clearFormData(formJson);
   });
 }
