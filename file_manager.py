@@ -24,10 +24,10 @@ def does_file_exist(path_to_file):
     file_path = file_path.replace("\\", "/")
     return os.path.isfile(file_path)
 
-def saveImageFile(imageFile, path_to_dir, file_name):
+def saveImageFile(image_file, path_to_dir, file_name):
     """
     Saves the specified image file to the specified directory and using the specified file name
     """
     file_path = os.getcwd() + path_to_dir + "/" + file_name
     file_path = file_path.replace("\\", "/")
-    imageFile.save(file_path)
+    image_file.save(file_path)
