@@ -33,7 +33,18 @@ function handleDocumentClick(event) {
  */
 function handleDropdownMenuItemClick(event) {
   event.preventDefault();
-  var menuItem = event.target;
+  var menuItem;
+  var eventTarget = event.target;
+  if (eventTarget.classList.contains('small-menu-icon-container') === true) {
+    /* User has clicked the icon section of the dropdown menu - ensure the correct content element is set */
+    menuItem = eventTarget.parentNode;
+  } else if (eventTarget.parentNode.classList.contains('small-menu-icon-container') === true) {
+    /* User has clicked one of the inner <div> elements inside the icon section - ensure the correct content element is set */
+    menuItem = eventTarget.parentNode.parentNode;
+  } else {
+    /* Content element has been clicked */
+    menuItem = eventTarget;
+  }
   var menuItemExpanded = menuItem.getAttribute('data-expanded');
   var dropdownMenuContainerId = '' + menuItem.parentNode.getAttribute('id') + '-content-parent';
   var dropdownMenuContainer = document.querySelector('div[id="' + dropdownMenuContainerId + '"]');
@@ -48,7 +59,7 @@ function handleDropdownMenuItemClick(event) {
     /* Show the dropdown menu container */
     dropdownMenuContainer.style.transition = 'opacity 0.3s ease-in-out';
     dropdownMenuContainer.style.opacity = 1;
-    event.target.setAttribute('data-expanded', 'true');
+    menuItem.setAttribute('data-expanded', 'true');
     document.addEventListener('click', handleDocumentClick, { capture: true });
   }
 }
