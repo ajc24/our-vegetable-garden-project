@@ -2,11 +2,46 @@
 <html>
   <head>
     <title>{{ page_title }}</title>
+    <script src="/static/javascript/menu-handler.js" type="text/javascript"></script>
     {% block javascript_1 %}
     {% endblock %}
     <link rel="stylesheet" href="/static/css/styles.css">
   </head>
   <body class="width-full-screen">
+    <div role="navigation" id="menu-bar" class="menu-bar-container">
+      <div id="menu-bar-content-outer" class="menu-bar-outer">
+        <div id="menu-bar-content-inner" class="menu-bar-inner">
+          <!-- Home page (Single menu item) -->
+          <div id="menu-item-home-page" class="menu-bar-item-single">
+            <a href="/home" class="menu-bar-item-content">&nbsp;&nbsp;Home Page&nbsp;&nbsp;</a>
+          </div>
+          <!-- Plants menu (Dropdown menu item) -->
+          <div id="menu-item-plants" class="menu-bar-item-single">
+            <div class="menu-bar-item-content" onclick="handleDropdownMenuItemClick(event);" data-expanded="false">
+              &nbsp;&nbsp;Plants&nbsp;&nbsp;
+              <div role="presentation" class="small-menu-icon-container">
+                <div class="small-menu-icon-upper"></div>
+                <div class="small-menu-icon-upper"></div>
+                <div class="small-menu-icon-lower"></div>
+              </div>
+              &nbsp;&nbsp;
+            </div>
+            <div id="menu-item-plants-content-parent" class="dropdown-menu-container">
+              <a id="menu-item-plants-dropdown-menu-item-0" href="/addaplant" class="dropdown-menu-item">
+                &nbsp;&nbsp;Add a new plant&nbsp;&nbsp;
+                <div role="presentation" class="small-right-arrow-icon-container"></div>
+                &nbsp;&nbsp;
+              </a>
+            </div>
+          </div>
+          <!-- End of menu items -->
+        </div>
+        <script>
+          setAllDropdownMenuContainerPositions();
+        </script>
+      </div>
+    </div>
+    </div>
     <div role="region" class="region-container width-full-screen">
       <div class="region-outer">
         {% block body_content %}
