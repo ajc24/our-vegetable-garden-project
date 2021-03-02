@@ -10,6 +10,40 @@ body {
   background-color: #F6F6F6;
 }
 
+.dropdown-menu-bar-item {
+  display: flex;
+  text-align: center;
+  white-space: nowrap;
+  height: 55px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  user-select: none;
+  background: transparent;
+  cursor: default;
+  transition: none;
+  color: #FFFFFF;
+}
+
+.dropdown-menu-bar-item-content {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  width: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: default;
+  transition: none;
+}
+
+.dropdown-menu-bar-item-content:hover {
+  background: #939393;
+  transition: all 0.3s ease-in-out 0s;
+}
+
 .dropdown-menu-container {
   display: flex;
   position: absolute;
@@ -22,6 +56,7 @@ body {
   border-right: none;
   border-bottom: none;
   background-color: #757575;
+  cursor: default;
   opacity: 0;
   transition: none;
 }
@@ -45,6 +80,7 @@ body {
   outline: none;
   background-color: #757575;
   transition: none;
+  cursor: default;
 }
 
 .dropdown-menu-item:hover {
@@ -157,7 +193,7 @@ label {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
-  cursor: pointer;
+  cursor: default;
 }
 
 .menu-bar-item-single {
@@ -173,6 +209,7 @@ label {
   background: transparent;
   transition: none;
   color: #FFFFFF;
+  cursor: default;
 }
 
 .menu-bar-item-single:hover {
