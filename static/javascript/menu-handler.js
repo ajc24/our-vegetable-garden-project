@@ -4,9 +4,10 @@
  */
 function handleDocumentClick(event) {
   var prevExpandedDropdownMenuItem;
-  if (event.target.classList.contains('menu-bar-item-content') === false) {
+  if (event.target.classList.contains('dropdown-menu-bar-item-content') === false &&
+        event.target.classList.contains('dropdown-menu-item') === false && event.target.classList.contains('small-right-arrow-icon-container') === false) {
     /* Clicked on the document - ensure any previously opened menu items are found and marked as hidden */
-    var dropdownMenuItems = document.querySelectorAll('div[class="menu-bar-item-content"][data-expanded]');
+    var dropdownMenuItems = document.querySelectorAll('div[class="dropdown-menu-bar-item-content"][data-expanded]');
     var index = 0;
     var foundExpandedMenuItem = false;
     while (index < dropdownMenuItems.length && foundExpandedMenuItem === false) {
@@ -17,9 +18,9 @@ function handleDocumentClick(event) {
       index += 1;
     }
   }
-  if (event.target.classList.contains('menu-bar-item-content') === true && event.target.getAttribute('data-expanded') === 'false') {
+  if (event.target.classList.contains('dropdown-menu-bar-item-content') === true && event.target.getAttribute('data-expanded') === 'false') {
     /* Another dropdown menu item has been clicked - ensure any previously opened menu items are found and marked as hidden */
-    prevExpandedDropdownMenuItem = document.querySelector('div[class="menu-bar-item-content"][data-expanded="true"]');
+    prevExpandedDropdownMenuItem = document.querySelector('div[class="dropdown-menu-bar-item-content"][data-expanded="true"]');
   }
   if (prevExpandedDropdownMenuItem !== undefined) {
     /* A previously opened menu item has been found - trigger a click event on it to hide it */
@@ -61,6 +62,26 @@ function handleDropdownMenuItemClick(event) {
     dropdownMenuContainer.style.opacity = 1;
     menuItem.setAttribute('data-expanded', 'true');
     document.addEventListener('click', handleDocumentClick, { capture: true });
+  }
+}
+
+/**
+ * Handles clicking on a dropdown menu link which will redirect the user to the destination href
+ * only if the dropdown menu container is visible
+ * @param {Event} event
+ */
+function handleDropdownMenuLinkClick(event) {
+  /* Determine which link item element has been clicked */
+  var linkItem;
+  if (event.target.classList.contains('small-right-arrow-icon-container') === true) {
+    linkItem = event.target.parentNode;
+  } else {
+    linkItem = event.target;
+  }
+  /* Determine whether the dropdown container is visible or not - force redirect to the href value if it is visible */
+  var dropdownMenuContainer = linkItem.parentNode;
+  if (dropdownMenuContainer.style.opacity === '1') {
+    window.location.replace('' + linkItem.getAttribute('data-href'));
   }
 }
 
