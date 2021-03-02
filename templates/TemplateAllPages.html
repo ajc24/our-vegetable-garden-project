@@ -17,8 +17,8 @@
             <a href="/home" class="menu-bar-item-content">&nbsp;&nbsp;Home Page&nbsp;&nbsp;</a>
           </div>
           <!-- Plants menu (Dropdown menu item) -->
-          <div id="menu-item-plants" class="menu-bar-item-single">
-            <div class="menu-bar-item-content" onclick="handleDropdownMenuItemClick(event);" data-expanded="false">
+          <div id="menu-item-plants" class="dropdown-menu-bar-item">
+            <div class="dropdown-menu-bar-item-content" onclick="handleDropdownMenuItemClick(event);" data-expanded="false">
               &nbsp;&nbsp;Plants&nbsp;&nbsp;
               <div role="presentation" class="small-menu-icon-container">
                 <div class="small-menu-icon-upper"></div>
@@ -28,7 +28,7 @@
               &nbsp;&nbsp;
             </div>
             <div id="menu-item-plants-content-parent" class="dropdown-menu-container">
-              <a id="menu-item-plants-dropdown-menu-item-0" href="/addaplant" class="dropdown-menu-item">
+              <a id="menu-item-plants-dropdown-menu-item-0" class="dropdown-menu-item" data-href="/addaplant" onclick="handleDropdownMenuLinkClick(event);">
                 &nbsp;&nbsp;Add a new plant&nbsp;&nbsp;
                 <div role="presentation" class="small-right-arrow-icon-container"></div>
                 &nbsp;&nbsp;
