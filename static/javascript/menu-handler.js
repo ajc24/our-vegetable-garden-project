@@ -39,20 +39,16 @@ function handleDropdownMenuItemClick(event) {
   var menuItem;
   var eventTarget = event.target;
   if (eventTarget.classList.contains('small-menu-icon-container') === true) {
-    console.log('Small Menu Icon Container');
     /* User has clicked the icon section of the dropdown menu - ensure the correct content element is set */
     menuItem = eventTarget.parentNode;
   } else if (eventTarget.classList.contains('small-menu-icon-upper') === true || eventTarget.classList.contains('small-menu-icon-lower') === true) {
-    console.log('Small Menu Icon Inner Div');
     /* User has clicked one of the inner <div> elements inside the icon section - ensure the correct content element is set */
     menuItem = eventTarget.parentNode.parentNode;
   } else {
-    console.log('Content Clicked');
     /* Content element has been clicked */
     menuItem = eventTarget;
   }
   var menuItemExpanded = menuItem.getAttribute('data-expanded');
-  console.log('MENU ITEM EXPANDED:', menuItemExpanded);
   var dropdownMenuContainerId = '' + menuItem.parentNode.getAttribute('id') + '-content-parent';
   var dropdownMenuContainer = document.querySelector('div[id="' + dropdownMenuContainerId + '"]');
   if (menuItemExpanded === 'true') {
