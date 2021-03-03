@@ -5,7 +5,9 @@
 function handleDocumentClick(event) {
   var prevExpandedDropdownMenuItem;
   if (event.target.classList.contains('dropdown-menu-bar-item-content') === false &&
-        event.target.classList.contains('dropdown-menu-item') === false && event.target.classList.contains('small-right-arrow-icon-container') === false) {
+        event.target.classList.contains('dropdown-menu-item') === false && event.target.classList.contains('small-right-arrow-icon-container') === false &&
+        event.target.classList.contains('small-menu-icon-container') === false && event.target.classList.contains('small-menu-icon-upper') === false &&
+        event.target.classList.contains('small-menu-icon-lower') === false) {
     /* Clicked on the document - ensure any previously opened menu items are found and marked as hidden */
     var dropdownMenuItems = document.querySelectorAll('div[class="dropdown-menu-bar-item-content"][data-expanded]');
     var index = 0;
@@ -37,16 +39,20 @@ function handleDropdownMenuItemClick(event) {
   var menuItem;
   var eventTarget = event.target;
   if (eventTarget.classList.contains('small-menu-icon-container') === true) {
+    console.log('Small Menu Icon Container');
     /* User has clicked the icon section of the dropdown menu - ensure the correct content element is set */
     menuItem = eventTarget.parentNode;
-  } else if (eventTarget.parentNode.classList.contains('small-menu-icon-container') === true) {
+  } else if (eventTarget.classList.contains('small-menu-icon-upper') === true || eventTarget.classList.contains('small-menu-icon-lower') === true) {
+    console.log('Small Menu Icon Inner Div');
     /* User has clicked one of the inner <div> elements inside the icon section - ensure the correct content element is set */
     menuItem = eventTarget.parentNode.parentNode;
   } else {
+    console.log('Content Clicked');
     /* Content element has been clicked */
     menuItem = eventTarget;
   }
   var menuItemExpanded = menuItem.getAttribute('data-expanded');
+  console.log('MENU ITEM EXPANDED:', menuItemExpanded);
   var dropdownMenuContainerId = '' + menuItem.parentNode.getAttribute('id') + '-content-parent';
   var dropdownMenuContainer = document.querySelector('div[id="' + dropdownMenuContainerId + '"]');
   if (menuItemExpanded === 'true') {
